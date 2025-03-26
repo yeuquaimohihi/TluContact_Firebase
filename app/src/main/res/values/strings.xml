@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">University Directory</string>
+    <string name="user_name_placeholder">User Name</string>
+    <string name="user_role_placeholder">Role</string>
+    <string name="unit_directory">Danh bạ Đơn vị</string>
+    <string name="staff_directory">Danh bạ CBGV</string>
+    <string name="student_directory">Danh bạ Sinh viên</string>
+    <string name="app_logo">App Logo</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="unit_logo">Unit Logo</string>
+    <string name="search_units">Tìm kiếm đơn vị</string>
+    <string name="filter">Bộ lọc</string>
+    <string name="sort">Sắp xếp</string>
+    <string name="search_staff">Tìm kiếm CBGV</string>
+    <string name="search_students">Tìm kiếm sinh viên</string>
+</resources>
