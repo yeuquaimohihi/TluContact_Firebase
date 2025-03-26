@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="4dp"
+    android:layout_margin="4dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
 
@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/iv_staff_avatar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/default_avatar"
-            app:civ_border_color="@color/primary"
-            app:civ_border_width="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/circle_bg"
+            android:contentDescription="@string/profile_picture"
+            android:padding="2dp"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,37 +37,39 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_staff_avatar"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/iv_staff_avatar"
+            tools:text="Nguyễn Văn A" />
 
         <TextView
             android:id="@+id/tv_staff_position"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/text_secondary"
-            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_staff_avatar"
-            app:layout_constraintTop_toBottomOf="@id/tv_staff_name" />
+            app:layout_constraintTop_toBottomOf="@id/tv_staff_name"
+            tools:text="Giảng viên" />
 
         <TextView
             android:id="@+id/tv_staff_unit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/primary"
-            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_staff_avatar"
-            app:layout_constraintTop_toBottomOf="@id/tv_staff_position" />
+            app:layout_constraintTop_toBottomOf="@id/tv_staff_position"
+            tools:text="Khoa Công nghệ thông tin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>

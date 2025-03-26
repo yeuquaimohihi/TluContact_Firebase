@@ -1,216 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_light">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             app:contentScrim="@color/primary"
-            app:expandedTitleMarginBottom="96dp"
+            app:expandedTitleMarginBottom="64dp"
             app:expandedTitleMarginStart="16dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="@string/unit_name_placeholder">
+
+            <ImageView
+                android:id="@+id/iv_unit_header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/unit_header_image"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:navigationIcon="@drawable/ic_back"
-                app:titleTextColor="@color/white" />
+                app:navigationIcon="@drawable/ic_back" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/iv_unit_logo"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:contentDescription="@string/unit_logo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_unit_code_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/unit_code"
-                android:textColor="@color/text_secondary"
-                app:layout_constraintBottom_toBottomOf="@id/iv_unit_logo"
-                app:layout_constraintStart_toEndOf="@id/iv_unit_logo"
-                app:layout_constraintTop_toTopOf="@id/iv_unit_logo" />
-
-            <TextView
-                android:id="@+id/tv_unit_code"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:textColor="@color/text_primary"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/tv_unit_code_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_unit_code_label"
-                app:layout_constraintTop_toTopOf="@id/tv_unit_code_label" />
-
-            <View
-                android:id="@+id/divider1"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:background="@color/divider"
-                app:layout_constraintTop_toBottomOf="@id/iv_unit_logo" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/contact_info_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                app:layout_constraintTop_toBottomOf="@id/divider1">
+                android:padding="16dp">
 
                 <ImageView
-                    android:id="@+id/ic_location"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/address"
-                    android:src="@drawable/ic_location"
+                    android:id="@+id/iv_unit_logo"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:contentDescription="@string/unit_logo"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_unit" />
 
                 <TextView
-                    android:id="@+id/tv_address"
+                    android:id="@+id/tv_unit_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ic_location"
-                    app:layout_constraintTop_toTopOf="@id/ic_location" />
-
-                <ImageView
-                    android:id="@+id/ic_phone"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="16dp"
-                    android:contentDescription="@string/phone"
-                    android:src="@drawable/ic_phone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_address" />
+                    app:layout_constraintStart_toEndOf="@id/iv_unit_logo"
+                    app:layout_constraintTop_toTopOf="@id/iv_unit_logo"
+                    tools:text="Khoa Công nghệ thông tin" />
 
                 <TextView
-                    android:id="@+id/tv_phone"
+                    android:id="@+id/tv_unit_code"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ic_phone"
-                    app:layout_constraintTop_toTopOf="@id/ic_phone" />
-
-                <ImageView
-                    android:id="@+id/ic_email"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="16dp"
-                    android:contentDescription="@string/email"
-                    android:src="@drawable/ic_email"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_phone" />
+                    app:layout_constraintStart_toEndOf="@id/iv_unit_logo"
+                    app:layout_constraintTop_toBottomOf="@id/tv_unit_name"
+                    tools:text="CNTT" />
 
                 <TextView
-                    android:id="@+id/tv_email"
+                    android:id="@+id/tv_unit_type"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ic_email"
-                    app:layout_constraintTop_toTopOf="@id/ic_email" />
+                    app:layout_constraintStart_toEndOf="@id/iv_unit_logo"
+                    app:layout_constraintTop_toBottomOf="@id/tv_unit_code"
+                    tools:text="Khoa" />
 
-                <ImageView
-                    android:id="@+id/ic_fax"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="16dp"
-                    android:contentDescription="@string/fax"
-                    android:src="@drawable/ic_fax"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_email" />
-
-                <TextView
-                    android:id="@+id/tv_fax"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:textColor="@color/text_primary"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ic_fax"
-                    app:layout_constraintTop_toTopOf="@id/ic_fax" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
-                android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/divider"
-                app:layout_constraintTop_toBottomOf="@id/contact_info_container" />
+                android:background="@color/material_dynamic_secondary10" />
 
             <TextView
-                android:id="@+id/tv_parent_unit_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="@string/parent_unit"
+                android:text="@string/contact_information"
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/divider2" />
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_parent_unit"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
+                android:orientation="vertical"
                 android:paddingHorizontal="16dp"
-                android:paddingVertical="8dp"
-                android:textColor="@color/primary"
-                app:layout_constraintTop_toBottomOf="@id/tv_parent_unit_label" />
+                android:paddingBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/address"
+                        android:src="@drawable/ic_location"
+                        app:tint="@color/primary" />
+
+                    <TextView
+                        android:id="@+id/tv_unit_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@color/text_primary"
+                        tools:text="175 Tây Sơn, Đống Đa, Hà Nội" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/phone"
+                        android:src="@drawable/ic_phone"
+                        app:tint="@color/primary" />
+
+                    <TextView
+                        android:id="@+id/tv_unit_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@color/text_primary"
+                        tools:text="024 3852 4529" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/email"
+                        android:src="@drawable/ic_email"
+                        app:tint="@color/primary" />
+
+                    <TextView
+                        android:id="@+id/tv_unit_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@color/text_primary"
+                        tools:text="cntt@tlu.edu.vn" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_fax"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/fax"
+                        android:src="@drawable/ic_fax"
+                        app:tint="@color/primary" />
+
+                    <TextView
+                        android:id="@+id/tv_unit_fax"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@color/text_primary"
+                        tools:text="024 3563 2069" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <View
-                android:id="@+id/divider3"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/divider"
-                app:layout_constraintTop_toBottomOf="@id/tv_parent_unit" />
+                android:background="@color/material_dynamic_neutral10" />
+
+            <LinearLayout
+                android:id="@+id/layout_parent_unit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@string/parent_unit"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_parent_unit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@color/primary"
+                    tools:text="Đại học Thủy Lợi" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_light" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_child_units_label"
@@ -220,15 +269,35 @@
                 android:text="@string/child_units"
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/divider3" />
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_child_units"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tv_child_units_label" />
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:padding="8dp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_no_child_units"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/no_child_units"
+                android:textColor="@color/text_secondary"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

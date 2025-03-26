@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="4dp"
+    android:layout_margin="4dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
 
@@ -18,9 +18,9 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:contentDescription="@string/unit_logo"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_unit" />
 
         <TextView
             android:id="@+id/tv_unit_name"
@@ -29,28 +29,30 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="2"
             android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_unit_logo"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Khoa Công nghệ thông tin" />
 
         <TextView
             android:id="@+id/tv_unit_code"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/text_secondary"
-            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_unit_logo"
-            app:layout_constraintTop_toBottomOf="@id/tv_unit_name" />
+            app:layout_constraintTop_toBottomOf="@id/tv_unit_name"
+            tools:text="CNTT" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>

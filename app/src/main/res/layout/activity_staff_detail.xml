@@ -1,195 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_light">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:contentScrim="@color/primary"
-            app:expandedTitleMarginBottom="96dp"
+            app:expandedTitleMarginBottom="64dp"
             app:expandedTitleMarginStart="16dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="@string/staff_name_placeholder">
+
+            <ImageView
+                android:id="@+id/iv_staff_header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/staff_header_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/header_bg"
+                app:layout_collapseMode="parallax" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:navigationIcon="@drawable/ic_back"
-                app:titleTextColor="@color/white" />
+                app:navigationIcon="@drawable/ic_back" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_staff_avatar"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/default_avatar"
-                app:civ_border_color="@color/primary"
-                app:civ_border_width="2dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_staff_code_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/staff_code"
-                android:textColor="@color/text_secondary"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@id/iv_staff_avatar"
-                app:layout_constraintTop_toTopOf="@id/iv_staff_avatar" />
-
-            <TextView
-                android:id="@+id/tv_staff_code"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:textColor="@color/text_primary"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_staff_code_label"
-                app:layout_constraintTop_toTopOf="@id/tv_staff_code_label" />
-
-            <TextView
-                android:id="@+id/tv_staff_position_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/position"
-                android:textColor="@color/text_secondary"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@id/iv_staff_avatar"
-                app:layout_constraintTop_toBottomOf="@id/tv_staff_code" />
-
-            <TextView
-                android:id="@+id/tv_staff_position"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:textColor="@color/text_primary"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_staff_position_label"
-                app:layout_constraintTop_toTopOf="@id/tv_staff_position_label" />
-
-            <View
-                android:id="@+id/divider1"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:background="@color/divider"
-                app:layout_constraintTop_toBottomOf="@id/iv_staff_avatar" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/contact_info_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                app:layout_constraintTop_toBottomOf="@id/divider1">
+                android:padding="16dp">
 
                 <ImageView
-                    android:id="@+id/ic_phone"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@string/phone"
-                    android:src="@drawable/ic_phone"
+                    android:id="@+id/iv_staff_avatar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/circle_bg"
+                    android:contentDescription="@string/profile_picture"
+                    android:padding="2dp"
+                    android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_phone"
+                    android:id="@+id/tv_staff_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ic_phone"
-                    app:layout_constraintTop_toTopOf="@id/ic_phone" />
-
-                <ImageView
-                    android:id="@+id/ic_email"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="16dp"
-                    android:contentDescription="@string/email"
-                    android:src="@drawable/ic_email"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_phone" />
+                    app:layout_constraintStart_toEndOf="@id/iv_staff_avatar"
+                    app:layout_constraintTop_toTopOf="@id/iv_staff_avatar"
+                    tools:text="Nguyễn Văn A" />
 
                 <TextView
-                    android:id="@+id/tv_email"
+                    android:id="@+id/tv_staff_position"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ic_email"
-                    app:layout_constraintTop_toTopOf="@id/ic_email" />
+                    app:layout_constraintStart_toEndOf="@id/iv_staff_avatar"
+                    app:layout_constraintTop_toBottomOf="@id/tv_staff_name"
+                    tools:text="Giảng viên" />
+
+                <TextView
+                    android:id="@+id/tv_staff_id_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/staff_id"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/iv_staff_avatar"
+                    app:layout_constraintTop_toBottomOf="@id/tv_staff_position" />
+
+                <TextView
+                    android:id="@+id/tv_staff_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_staff_id_label"
+                    app:layout_constraintTop_toTopOf="@id/tv_staff_id_label"
+                    tools:text="CB12345" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
-                android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/divider"
-                app:layout_constraintTop_toBottomOf="@id/contact_info_container" />
+                android:background="@color/divider" />
 
             <TextView
-                android:id="@+id/tv_unit_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="@string/contact_information"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/phone"
+                        android:src="@drawable/ic_phone"
+                        app:tint="@color/primary" />
+
+                    <TextView
+                        android:id="@+id/tv_staff_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@color/text_primary"
+                        tools:text="0123456789" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/email"
+                        android:src="@drawable/ic_email"
+                        app:tint="@color/primary" />
+
+                    <TextView
+                        android:id="@+id/tv_staff_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@color/text_primary"
+                        tools:text="nguyenvana@tlu.edu.vn" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:text="@string/unit"
                 android:textColor="@color/text_primary"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/divider2" />
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_unit"
+                android:id="@+id/tv_staff_unit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="8dp"
                 android:textColor="@color/primary"
-                app:layout_constraintTop_toBottomOf="@id/tv_unit_label" />
+                tools:text="Khoa Công nghệ thông tin" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
